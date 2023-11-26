@@ -21,4 +21,5 @@ public class InsPackageIndexController {
         res.put("data", "1");
 
         return new ResponseEntity<>(res, HttpStatus.OK);
+    }
 }
