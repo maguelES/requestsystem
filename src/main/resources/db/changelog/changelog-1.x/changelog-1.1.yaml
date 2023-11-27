@@ -1,0 +1,97 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-roles-and-permissions
+      author: maguel
+      changes:
+        - createTable:
+            catalogName: authorization
+            schemaName: public
+            tableName: role
+            remarks: Creates Role table for authorization
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: "CURRENT_TIMESTAMP"
+              - column:
+                  name: deleted_at
+                  type: timestamp
+              - column:
+                  name: updated_at
+                  type: timestamp
+        - createTable:
+            catalogName: authorization
+            schemaName: public
+            tableName: permission
+            remarks: Creates Permissions table for authorization
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: "CURRENT_TIMESTAMP"
+              - column:
+                  name: deleted_at
+                  type: timestamp
+              - column:
+                  name: updated_at
+                  type: timestamp
+        - createTable:
+            catalogName: authorization
+            schemaName: public
+            tableName: role_permission
+            remarks: Role's permissions attributes. One-to-Many
+            columns:
+              # - column:
+              #     name: id
+              #     type: BIGSERIAL
+              #     autoIncrement: true
+              #     constraints:
+              #       primaryKey: true
+              - column:
+                  name: permission_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: role_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+        - addForeignKeyConstraint:
+            baseTableName: role_permission
+            baseColumnNames: permission_id
+            constraintName: role_permission_permission_fk
+            referencedTableName: permission
+            referencedColumnNames: id
+            deleteCascade: true
+        - addForeignKeyConstraint:
+            baseTableName: role_permission
+            baseColumnNames: role_id
+            constraintName: role_permission_role_fk
+            referencedTableName: role
+            referencedColumnNames: id
+            deleteCascade: true
