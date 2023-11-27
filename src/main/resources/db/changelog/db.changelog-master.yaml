@@ -1,0 +1,8 @@
+databaseChangeLog:
+       - preConditions:
+                - onFail: HALT
+                - onError: HALT
+       - includeAll:
+                path: changelog-1.x
+                relativeToChangelogFile: true
+              

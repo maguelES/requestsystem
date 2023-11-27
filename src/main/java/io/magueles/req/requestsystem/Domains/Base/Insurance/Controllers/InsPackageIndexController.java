@@ -1,4 +1,4 @@
-package io.magueles.req.requestsystem.Domains.Base.Insurance.Controllers;
+package io.magueles.req.requestsystem.domains.base.insurance.controllers;
 
 import java.util.HashMap;
 import org.springframework.http.HttpStatus;
