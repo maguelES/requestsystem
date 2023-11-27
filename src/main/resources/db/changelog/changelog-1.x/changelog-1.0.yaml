@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: define-user
+      author: maguel
+      changes:
+        - createTable:
+            catalogName: user
+            schemaName: public
+            tableName: user
+            remarks: Creates  User table
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+              - column:
+                  name: name
+                  type: VARCHAR(255)
