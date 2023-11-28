@@ -7,12 +7,16 @@ databaseChangeLog:
             catalogName: user
             schemaName: public
             tableName: user
-            remarks: Creates  User table
+            remarks: Creates User table
             columns:
               - column:
                   name: id
                   type: BIGINT
                   autoIncrement: true
+                  constraints:
+                    primaryKey: true
               - column:
                   name: name
                   type: VARCHAR(255)
+                  constraints:
+                    nullable: false

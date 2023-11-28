@@ -101,7 +101,51 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<!-- <plugin>
+				
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<configuration>
+					
+					
+					<systemPropertyVariables>
+						<env>dev</env>
+						<propertyFile>liquibase-dev.properties</propertyFile>
+					</systemPropertyVariables>
+				</configuration>
+				<dependencies>
+					
+				</dependencies>
+			</plugin> -->
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>prod</id>
+		</profile>
+		<profile>
+			<id>dev</id>
+			<build>
+				<plugins>
+					<plugin>
+						<!--start with basic information to get Liquibase plugin:
+						include <groupId>, <artifactID>, and <version> elements-->
+						<groupId>org.liquibase</groupId>
+						<artifactId>liquibase-maven-plugin</artifactId>
+						<configuration>
+							<!--set values for Liquibase properties and settings
+							for example, the location of a properties file to use-->
+							<propertyFile>liquibase-dev.properties</propertyFile>
+						</configuration>
+						<dependencies>
+							
+						</dependencies>
+					</plugin>
+				</plugins>
+			</build>
+			
+		</profile>
+	</profiles>
 
 </project>
