@@ -20,3 +20,33 @@ databaseChangeLog:
                   type: VARCHAR(255)
                   constraints:
                     nullable: false
+              - column:
+                  name: email
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: email_verified_at
+                  type: timestamp
+              - column:
+                  name: password
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: remember_token
+                  type: VARCHAR(255)
+              - column:
+                  name: profile_photo_path
+                  type: TEXT
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: "CURRENT_TIMESTAMP"
+              - column:
+                  name: updated_at
+                  type: timestamp
+              - column:
+                  name: deleted_at
+                  type: timestamp
